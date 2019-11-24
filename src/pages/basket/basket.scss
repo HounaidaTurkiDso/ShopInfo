@@ -1,0 +1,27 @@
+page-basket {
+  .item-md{
+    background-color: transparent;
+    border-bottom: 0.25px solid #dddddd;
+    margin: 0;
+  }
+
+
+  .delete {
+    font-size: 2rem;
+    color: #488aff;
+  }
+  .incMinus {
+    font-size: 2rem;
+    color: #488aff;
+  }
+
+  .incCount{
+    font-size: 1.5rem;
+    padding: 0 5px;
+  }
+
+  .incPlus{
+    font-size: 2rem;
+    color: #488aff;
+  }
+}

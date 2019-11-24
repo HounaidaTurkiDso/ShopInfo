@@ -1,0 +1,100 @@
+<ion-header>
+
+      <ion-navbar hideBackButton>
+        <ion-buttons left>
+            <button ion-button (click)="goBack()">
+                <ion-icon  color="light" name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Panier</ion-title>
+     </ion-navbar>
+  </ion-header>
+
+
+<ion-content no-padding *ngIf="selectedItems.length != 0">
+
+
+  <ion-card style="margin: 0; width: 100%;">
+    <ion-list  *ngFor="let item of selectedItems">
+      <ion-item>
+       <ion-row>
+          <ion-thumbnail item-start>
+              <img src={{item.img}}>
+            </ion-thumbnail>
+            <ion-col>  <h2>{{item.name}}</h2>
+
+              <h1>{{item.price*item.amount}} TND</h1></ion-col>
+
+
+
+       </ion-row>
+       <ion-item-divider>
+
+        </ion-item-divider>
+       <ion-row>
+         <ion-col>
+          <ion-icon   name="trash"  class="delete" (click)="removeCartItem(item)"></ion-icon>  <span class="incCount">RETIRER</span>
+        </ion-col>
+          <ion-col  float-right >
+
+              <ion-icon  float-right   class="incPlus" name="add-circle" (click)="increaseCartItem(item)" ></ion-icon>
+
+
+            <span  float-right  class="incCount">{{item.amount}}</span>
+            <ion-icon  *ngIf="item.amount == 1" float-right class="incMinus" name="remove-circle"  ></ion-icon>
+
+            <ion-icon *ngIf="item.amount != 1"  float-right class="incMinus" name="remove-circle"  (click)="decreaseCartItem(item)"></ion-icon>
+          </ion-col>
+
+
+       </ion-row>
+
+
+
+      </ion-item>
+
+
+
+    </ion-list>
+  </ion-card>
+
+  <ion-card style="margin: 0; width: 100%;">
+
+      <ion-item>
+          <p>Total: </p>
+          <ion-note item-end><b>{{getTotal()}} TND</b></ion-note>
+        </ion-item>
+
+  </ion-card>
+
+</ion-content>
+
+
+
+
+<ion-content class="paddingcard" *ngIf="selectedItems.length === 0">
+
+
+  <ion-card style="margin: 0; width: 100%;">
+    <h1>Vous n'avez pas d'articles dans le panier </h1>
+  </ion-card>
+
+
+
+</ion-content>
+<ion-footer *ngIf="selectedItems.length == 0">
+    <ion-toolbar>
+      <button ion-button icon-left block outline color="light" (click)="goBack()" >
+      CONTINUER VOS ACHATS
+      </button>
+    </ion-toolbar>
+  </ion-footer>
+
+<ion-footer *ngIf="selectedItems.length != 0">
+  <ion-toolbar>
+    <button ion-button icon-left block outline color="light" >
+      <ion-icon name="checkmark"></ion-icon>
+      Valider la Commande
+    </button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,51 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title> {{product.name}} </ion-title>
+      <ion-buttons end>
+
+          <button ion-button icon-only (click)="openCart()">
+            <ion-badge *ngIf="cart.length >0">{{cart.length}}</ion-badge>
+            <ion-icon name="cart"></ion-icon>
+          </button>
+        </ion-buttons>
+    </ion-navbar>
+
+  </ion-header>
+
+
+  <ion-content>
+
+
+
+    <ion-card>
+      <ion-slides  >
+          <img src={{product.img}} width="50px"/>
+      </ion-slides>
+
+      <ion-card-content>
+        <ion-card-title>
+          {{product.name}}
+        </ion-card-title>
+
+        <p [innerHTML]="product.description"></p>
+
+      </ion-card-content>
+
+
+    </ion-card>
+
+
+
+
+
+
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>
+      <button ion-button icon-left block outline color="light" (click)="addToCart(product)">
+        <ion-icon name="basket"></ion-icon>
+        Ajouter au panier
+      </button>
+    </ion-toolbar>
+  </ion-footer>

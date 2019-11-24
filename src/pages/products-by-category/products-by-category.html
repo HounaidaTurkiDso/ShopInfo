@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title> Produits </ion-title>
+    <ion-buttons end>
+
+
+        <button ion-button icon-only (click)="openCart()">
+          <ion-badge *ngIf="cart.length >0">{{cart.length}}</ion-badge>
+          <ion-icon name="cart"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+  <ion-content no-padding>
+
+
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-6  *ngFor="let product of products">
+          <ion-card>
+            <ion-chip color="primary" style="position: absolute; right: 20px; top: 20px;">
+              <ion-label>{{product.promo}}</ion-label>
+            </ion-chip>
+            <img src={{product.img}} width="50px;" height="70px" (click)="openProductDetailPage(product)" no-margin/>
+            <div padding>
+              <h2>{{product.name}}</h2>
+              <h4> {{product.price}} TND</h4>
+            </div>
+          </ion-card>
+        </ion-col>
+
+
+      </ion-row>
+    </ion-grid>
+
+  </ion-content>
